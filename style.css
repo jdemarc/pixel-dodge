@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  /* height, display */
+  margin: 0;
+  background-color: lightgrey;
+}
+
+.game-container {
+  height: 600px;
+  width: 500px;
+  position: absolute;
+  background-color: red;
+}
+
+.sky {
+  height: 600px;
+  width: 500px;
+  position: absolute;
+  background-color:blue;
+}
+
+.ship {
+  height: 50px;
+  width: 50px;
+  background-color: yellow;
+  position: absolute;
+  left: 225px;
+  bottom: 100px;
+}
