@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   /* ----- state variables ----- */
   let shipLeft = 200;
-  let shipBottom = 100;
+  let shipBottom = 50;
   let gravity = 2;
   let isGameOver = false;
 
@@ -17,27 +17,34 @@ document.addEventListener('DOMContentLoaded', () => {
   //   ship.style.left = shipLeft + 'px';
   // }
 
+  // function control(e) {
+  //   if (e.keyCode === 37) {
+  //     // go left
+  //     // move('L');
+  //   } else if (e.keyCode === 38) {
+  //     // go up
+  //     // move('U');
+  //   } else if (e.keyCode === 39) {
+  //     // go right
+  //     // move('R');
+  //   } else if (e.keyCode === 40) {
+  //     // go down
+  //     move('D');
+  //   }
+  // }
+
   function control(e) {
-    if (e.keyCode === 37) {
-      console.log(e.target);
-      // go left
-      // move('L');
-    } else if (e.keyCode === 38) {
-      // go up
-      // move('U');
-    } else if (e.keyCode === 39) {
-      // go right
-      // move('R');
-    } else if (e.keyCode === 40) {
-      // go down
-      move('D');
-    }
+    (e.keyCode === 37) ? move('L')
+    : (e.keyCode === 38) ? move ('U')
+    : (e.keyCode === 39) ? move ('R')
+    : (e.keyCode === 40) ? move('D')
+    : null;
   }
 
   function move(direction) {
     if (direction === 'D') {
-      shipBottom += 10;
-      ship.style.bottom = shipBottom - 'px';
+      shipBottom -= 10;
+      ship.style.bottom = shipBottom + 'px';
       console.log(shipBottom);
     }
   }
