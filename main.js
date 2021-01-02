@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   /* ----- state variables ----- */
-  let shipLeft = 200;
-  let shipBottom = 50;
+  let shipLeft = 225;
+  let shipBottom = 100;
   let gravity = 2;
   let isGameOver = false;
 
@@ -42,11 +42,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function move(direction) {
-    if (direction === 'D') {
+    if (direction === 'L') {
+      shipLeft -= 10;
+    } else if (direction === 'U') {
+      shipBottom += 10;
+    } else if (direction === 'R') {
+      shipLeft += 10;
+    } else if (direction === 'D') {
       shipBottom -= 10;
-      ship.style.bottom = shipBottom + 'px';
-      console.log(shipBottom);
     }
+
+    ship.style.left = shipLeft + 'px';
+    ship.style.bottom = shipBottom + 'px';
+
+    // if (direction === 'D') {
+    //   shipBottom -= 10;
+    //   ship.style.bottom = shipBottom + 'px';
+    // }
+
+    console.log('S.left: ', shipLeft);
+    console.log('S.bottom: ', shipBottom);
   }
 
 })
