@@ -47,8 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function generateObstacle() {
-    // let obstacleLeft = 25;
-    // let obstacleBottom = 25;
+    let obstacleLeft = 25;
+    let obstacleBottom = 550;
 
     const obstacle = document.createElement('div');
 
@@ -56,8 +56,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     gameContainer.appendChild(obstacle);
 
-    // obstacle.style.left = obstacleLeft + 'px';
-    // obstacle.style.bottom = obstacleBottom + 'px';
+    obstacle.style.left = obstacleLeft + 'px';
+    obstacle.style.bottom = obstacleBottom + 'px';
+
+    function moveObstacle() {
+      obstacleBottom -= 2;
+
+      obstacle.style.bottom = obstacleBottom + 'px';
+
+    }
+
+    let obstacleTimer = setInterval(moveObstacle, 20);
+
   }
 
   generateObstacle();
