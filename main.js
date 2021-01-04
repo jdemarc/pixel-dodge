@@ -15,10 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // start();
 
   // Initialize ship position.
-  function start() {
+  function startGame() {
     ship.style.bottom = shipBottom + 'px';
     ship.style.left = shipLeft + 'px';
   }
+
+  //let gameTimerId = setInterval(startGame, 20);
 
   function control(e) {
     (e.keyCode === 37) ? move('L')
@@ -42,12 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
     ship.style.left = shipLeft + 'px';
     ship.style.bottom = shipBottom + 'px';
 
-    console.log('S.left: ', shipLeft);
-    console.log('S.bottom: ', shipBottom);
+    // console.log('S.left: ', shipLeft);
+    // console.log('S.bottom: ', shipBottom);
   }
 
   function generateObstacle() {
-    let obstacleBottom = 550;
+    let obstacleBottom = 500;
     let lateralRandom = Math.random() * 60;
     let obstacleLeft = lateralRandom;
 
@@ -64,19 +66,32 @@ document.addEventListener('DOMContentLoaded', () => {
       obstacleBottom -= 2;
       obstacle.style.bottom = obstacleBottom + 'px';
 
+      // When the obstacle reaches the bottom of the screen, clear its timer and remove it from game container.
+
       if (obstacleBottom < 0) {
         clearInterval(obstacleTimer);
         gameContainer.removeChild(obstacle);
       }
 
+      // If the ship comes in contact with the pixel, game over and clear timer(s).
+
+      // if (obstacleBottom <= shipBottom + 50 && shipLeft < obstacleLeft + 26
+      //   )
+      // {
+      //   console.log('touch');
+      //   //gameOver();
+      //  clearInterval(obstacleTimer);
+      // }
+
     }
 
-    let obstacleTimer = setInterval(moveObstacle, 20);
+    //let obstacleTimer = setInterval(moveObstacle, 20);
   }
 
   generateObstacle();
 
   function gameOver() {
+    clearInterval(gameTimerId);
     isGameOver = true;
   }
 
