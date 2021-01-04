@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ship.style.left = shipLeft + 'px';
   }
 
-  //let gameTimerId = setInterval(startGame, 20);
+  let gameTimerId = setInterval(startGame, 20);
 
   function control(e) {
     (e.keyCode === 37) ? move('L')
@@ -49,9 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function generateObstacle() {
-    let obstacleBottom = 500;
-    let lateralRandom = Math.random() * 60;
-    let obstacleLeft = lateralRandom;
+    let obstacleBottom = 200;
+    // let lateralRandom = Math.random() * 60;
+    let obstacleLeft = 225;
 
     const obstacle = document.createElement('div');
 
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     obstacle.style.bottom = obstacleBottom + 'px';
 
     function moveObstacle() {
-      obstacleBottom -= 2;
+      // obstacleBottom -= 2;
       obstacle.style.bottom = obstacleBottom + 'px';
 
       // When the obstacle reaches the bottom of the screen, clear its timer and remove it from game container.
@@ -75,17 +75,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // If the ship comes in contact with the pixel, game over and clear timer(s).
 
-      // if (obstacleBottom <= shipBottom + 50 && shipLeft < obstacleLeft + 26
-      //   )
-      // {
-      //   console.log('touch');
-      //   //gameOver();
+      if (obstacleBottom <= shipBottom + 50 && obstacleBottom >= shipBottom - 25 &&
+         obstacleLeft + 26 >= shipLeft && obstacleLeft <= shipLeft + 50 ||
+         shipBottom === 0 ||
+         shipBottom === 550 ||
+         shipLeft === 0 ||
+         shipLeft === 410
+
+        )
+      {
+        console.log('touch');
+        //gameOver();
       //  clearInterval(obstacleTimer);
-      // }
+      }
 
     }
 
-    //let obstacleTimer = setInterval(moveObstacle, 20);
+    let obstacleTimer = setInterval(moveObstacle, 20);
   }
 
   generateObstacle();
