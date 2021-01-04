@@ -49,9 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function generateObstacle() {
-    let obstacleBottom = 200;
-    // let lateralRandom = Math.random() * 60;
-    let obstacleLeft = 225;
+    // let obstacleBottom = 200;
+    let obstacleBottom = 400;
+    let lateralRandom = Math.random() * 200;
+    // let obstacleLeft = 225;
+    let obstacleLeft = lateralRandom;
 
     const obstacle = document.createElement('div');
 
@@ -63,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     obstacle.style.bottom = obstacleBottom + 'px';
 
     function moveObstacle() {
-      // obstacleBottom -= 2;
+      obstacleBottom -= 2;
       obstacle.style.bottom = obstacleBottom + 'px';
 
       // When the obstacle reaches the bottom of the screen, clear its timer and remove it from game container.
@@ -85,13 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
         )
       {
         console.log('touch');
-        //gameOver();
-      //  clearInterval(obstacleTimer);
+        gameOver();
+        clearInterval(obstacleTimer);
       }
 
     }
 
     let obstacleTimer = setInterval(moveObstacle, 20);
+    if (!isGameOver) setTimeout(generateObstacle, 2000);
   }
 
   generateObstacle();
@@ -99,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function gameOver() {
     clearInterval(gameTimerId);
     isGameOver = true;
+    
   }
 
 })
