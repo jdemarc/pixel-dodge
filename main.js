@@ -47,8 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function generateObstacle() {
-    let obstacleLeft = 25;
     let obstacleBottom = 550;
+    let lateralRandom = Math.random() * 60;
+    let obstacleLeft = lateralRandom;
 
     const obstacle = document.createElement('div');
 
@@ -66,8 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
-    let obstacleTimer = setInterval(moveObstacle, 20);
-
+    //let obstacleTimer = setInterval(moveObstacle, 20);
   }
 
   generateObstacle();
