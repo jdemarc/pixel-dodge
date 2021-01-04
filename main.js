@@ -62,14 +62,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function moveObstacle() {
       obstacleBottom -= 2;
-
       obstacle.style.bottom = obstacleBottom + 'px';
+
+      if (obstacleBottom < 0) {
+        clearInterval(obstacleTimer);
+        gameContainer.removeChild(obstacle);
+      }
 
     }
 
-    //let obstacleTimer = setInterval(moveObstacle, 20);
+    let obstacleTimer = setInterval(moveObstacle, 20);
   }
 
   generateObstacle();
+
+  function gameOver() {
+    isGameOver = true;
+  }
 
 })
