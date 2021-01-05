@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', control);
 
   /* ----- functions ----- */
-  // start();
+  startGame();
 
   // Initialize ship position.
   function startGame() {
@@ -57,7 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const obstacle = document.createElement('div');
 
-    obstacle.classList.add('obstacle');
+    if (!isGameOver) {
+      obstacle.classList.add('obstacle');
+    }
 
     gameContainer.appendChild(obstacle);
 
@@ -70,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // When the obstacle reaches the bottom of the screen, clear its timer and remove it from game container.
 
-      if (obstacleBottom < 0) {
+      if (obstacleBottom <= 0) {
         clearInterval(obstacleTimer);
         gameContainer.removeChild(obstacle);
       }
@@ -84,13 +86,11 @@ document.addEventListener('DOMContentLoaded', () => {
          shipLeft === 0 ||
          shipLeft === 410
 
-        )
-      {
+        ) {
         console.log('touch');
         gameOver();
         clearInterval(obstacleTimer);
       }
-
     }
 
     let obstacleTimer = setInterval(moveObstacle, 20);
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function gameOver() {
     clearInterval(gameTimerId);
     isGameOver = true;
-    
+    document.removeEventListener('keydown', control);
   }
 
 })
