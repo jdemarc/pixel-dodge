@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   /* ----- state variables ----- */
-  let shipLeft = 210;
+  let shipLeft = 130;
   let shipBottom = 100;
   let isGameOver = false;
   let score = 0;
@@ -50,10 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function generateObstacle() {
-    // let obstacleBottom = 200;
     let obstacleBottom = 600;
-    let lateralRandom = Math.random() * 420;
-    // let obstacleLeft = 225;
+    let lateralRandom = Math.random() * 275;
     let obstacleLeft = lateralRandom;
 
     const obstacle = document.createElement('div');
@@ -68,11 +66,10 @@ document.addEventListener('DOMContentLoaded', () => {
     obstacle.style.bottom = obstacleBottom + 'px';
 
     function moveObstacle() {
-      obstacleBottom -= 10;
+      obstacleBottom -= 15;
       obstacle.style.bottom = obstacleBottom + 'px';
 
       // When the obstacle reaches the bottom of the screen, clear its timer and remove it from game container.
-
       if (obstacleBottom <= 0) {
         clearInterval(obstacleTimer);
         gameContainer.removeChild(obstacle);
@@ -82,13 +79,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // If the ship comes in contact with the pixel, game over and clear timer(s).
-
       if (obstacleBottom <= shipBottom + 50 && obstacleBottom >= shipBottom - 25 &&
          obstacleLeft + 26 >= shipLeft && obstacleLeft <= shipLeft + 50 ||
          shipBottom === 0 ||
          shipBottom === 550 ||
          shipLeft === 0 ||
-         shipLeft === 410
+         shipLeft === 250
 
         ) {
         console.log('touch');
