@@ -19,7 +19,7 @@ body {
   height: 600px;
   width: 460px;
   position: absolute;
-  background-color:blue;
+  background-color: gray;
 }
 
 .ship {
@@ -34,6 +34,15 @@ body {
 .obstacle {
   height: 26px;
   width: 26px;
-  background-color: greenyellow;
+  background-color: darkgreen;
   position: absolute;
+}
+
+.game-over {
+  left: 125px;
+  bottom: 330px;
+  height: 100px;
+  color: black;
+  position: absolute;
+  font-size: 32px;
 }
