@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize ship position.
   function startGame() {
+    isGameOver = false;
     ship.style.bottom = shipBottom + 'px';
     ship.style.left = shipLeft + 'px';
   }
@@ -117,11 +118,17 @@ document.addEventListener('DOMContentLoaded', () => {
     gameOverEl.innerHTML = 'GAME OVER';
     gameContainer.appendChild(gameOverEl);
 
-    // Replay button?
+    const replayEl = document.createElement('button');
+    replayEl.classList.add('replay');
+    replayEl.textContent = 'Replay';
+    gameContainer.appendChild(replayEl);
+
+    replayEl.addEventListener('click', replay);
+
   }
 
   function replay() {
-    
+
   }
 
 })

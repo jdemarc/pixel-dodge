@@ -46,3 +46,11 @@ body {
   position: absolute;
   font-size: 30px;
 }
+
+.replay {
+  left: 110px;
+  bottom: 350px;
+  color: black;
+  position: absolute;
+  font-size: 20px;
+}
