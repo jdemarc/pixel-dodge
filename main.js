@@ -51,6 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function generateObstacle() {
+
+    // Obstacle 1
     let obstacleBottom = 600;
     let lateralRandom = Math.random() * 275;
     let obstacleLeft = lateralRandom;
@@ -67,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     obstacle.style.bottom = obstacleBottom + 'px';
 
     function moveObstacle() {
-      obstacleBottom -= 15;
+      obstacleBottom -= 10;
       obstacle.style.bottom = obstacleBottom + 'px';
 
       // When the obstacle reaches the bottom of the screen, clear its timer and remove it from game container.
@@ -105,30 +107,28 @@ document.addEventListener('DOMContentLoaded', () => {
   generateObstacle();
 
   function gameOver() {
-    addGameOverElements();
-
+    addGameOverElement();
     clearInterval(gameTimerId);
     isGameOver = true;
     document.removeEventListener('keydown', control);
+
+
   }
 
-  function addGameOverElements() {
+  function addGameOverElement() {
     const gameOverEl = document.createElement('div');
     gameOverEl.classList.add('game-over');
     gameOverEl.innerHTML = 'GAME OVER';
     gameContainer.appendChild(gameOverEl);
 
-    const replayEl = document.createElement('button');
+    const replayEl = document.createElement('div');
     replayEl.classList.add('replay');
-    replayEl.textContent = 'Replay';
+    replayEl.innerHTML = 'AGAIN?';
     gameContainer.appendChild(replayEl);
 
-    replayEl.addEventListener('click', replay);
-
-  }
-
-  function replay() {
-
+    replayEl.addEventListener('click', () => {
+      document.location.href = '';
+    });
   }
 
 })
