@@ -34,13 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function move(direction) {
     if (direction === 'L') {
-      if (shipLeft > 0) shipLeft -= 10;
+      if (shipLeft > 0) shipLeft -= 13;
     } else if (direction === 'U') {
-      if (shipBottom < 550) shipBottom += 10;
+      if (shipBottom < 550) shipBottom += 13;
     } else if (direction === 'R') {
-      if (shipLeft < 410) shipLeft += 10;
+      if (shipLeft < 410) shipLeft += 13;
     } else if (direction === 'D') {
-      if (shipBottom > 0) shipBottom -= 10;
+      if (shipBottom > 0) shipBottom -= 13;
     }
 
     ship.style.left = shipLeft + 'px';
@@ -85,9 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (obstacleBottom <= shipBottom + 50 && obstacleBottom >= shipBottom - 25 &&
          obstacleLeft + 26 >= shipLeft && obstacleLeft <= shipLeft + 50 ||
          shipBottom === 0 ||
-         shipBottom === 550 ||
-         shipLeft === 0 ||
-         shipLeft === 250
+         shipBottom >= 550 ||
+         shipLeft <= 0 ||
+         shipLeft >= 250
 
         ) {
         console.log('touch');
@@ -126,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
     replayEl.innerHTML = 'AGAIN?';
     gameContainer.appendChild(replayEl);
 
+    // Reload page on click.
     replayEl.addEventListener('click', () => {
       document.location.href = '';
     });
