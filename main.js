@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let obstacleTimer = setInterval(moveObstacle, 20);
 
     // Continue to generate obstacles if the game is playing.
-    if (!isGameOver) setTimeout(generateObstacle, 2000);
+    if (!isGameOver) setTimeout(generateObstacle, 1250);
   }
 
   generateObstacle();
