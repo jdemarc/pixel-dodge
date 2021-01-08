@@ -38,9 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (direction === 'U') {
       if (shipBottom < 550) shipBottom += 13;
     } else if (direction === 'R') {
-      if (shipLeft < 410) shipLeft += 13;
+      if (shipLeft < 247) shipLeft += 13;
     } else if (direction === 'D') {
-      if (shipBottom > 0) shipBottom -= 13;
+      if (shipBottom > 9) shipBottom -= 13;
     }
 
     ship.style.left = shipLeft + 'px';
@@ -53,9 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
   function generateObstacle() {
 
     // Obstacle 1
-    let obstacleBottom = 600;
+    let obstacleBottom = 550;
     let lateralRandom = Math.random() * 275;
     let obstacleLeft = lateralRandom;
+    // let obstacleLeft = 117;
 
     const obstacle = document.createElement('div');
 
@@ -81,14 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // console.log(score);
       }
 
-      // If the ship comes in contact with the pixel, game over and clear timer(s).
-      if (obstacleBottom <= shipBottom + 50 && obstacleBottom >= shipBottom - 25 &&
-         obstacleLeft + 26 >= shipLeft && obstacleLeft <= shipLeft + 50 ||
-         shipBottom === 0 ||
-         shipBottom >= 550 ||
-         shipLeft <= 0 ||
-         shipLeft >= 250
+      // 600 x 300
 
+      // If the ship comes in contact with the obstacle, game over and clear timer(s).
+      if (obstacleBottom <= shipBottom + 50 && obstacleBottom >= shipBottom - 25 &&
+         obstacleLeft + 24 >= shipLeft && obstacleLeft <= shipLeft + 50
         ) {
         console.log('touch');
         gameOver();
@@ -111,8 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
     clearInterval(gameTimerId);
     isGameOver = true;
     document.removeEventListener('keydown', control);
-
-
   }
 
   function addGameOverElement() {

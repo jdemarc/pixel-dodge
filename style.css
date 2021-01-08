@@ -24,7 +24,7 @@ body {
 .ship {
   height: 50px;
   width: 50px;
-  background-color: yellow;
+  background-image: url('smallship-scaled.png');
   position: absolute;
   left: 130px;
   bottom: 100px;
@@ -33,7 +33,7 @@ body {
 .obstacle {
   height: 26px;
   width: 26px;
-  background-color: darkgreen;
+  background-image: url('asteroid-scaled.png');
   position: absolute;
 }
 
