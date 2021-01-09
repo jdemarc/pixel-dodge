@@ -18,7 +18,7 @@ body {
   height: 600px;
   width: 300px;
   position: absolute;
-  background-color: lightskyblue;
+  background-image: linear-gradient(darkblue, lightblue);
 }
 
 .ship {
@@ -55,5 +55,12 @@ body {
 }
 
 .replay:hover {
-  color: blue;
+  color: white;
+  cursor: pointer;
+}
+
+.title {
+  color: white;
+  padding-top: 10px;
+  padding-left: 38%;
 }

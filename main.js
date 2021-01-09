@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ----- state variables ----- */
   let shipLeft = 130;
   let shipBottom = 100;
-  let isGameOver = false;
+  let isGameOver;
   let score = 0;
 
   /* ----- cached element references ----- */
@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', control);
 
   /* ----- functions ----- */
-  startGame();
 
   // Initialize ship position.
   function startGame() {
@@ -85,8 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // 600 x 300
 
       // If the ship comes in contact with the obstacle, game over and clear timer(s).
-      if (obstacleBottom <= shipBottom + 50 && obstacleBottom >= shipBottom - 25 &&
-         obstacleLeft + 24 >= shipLeft && obstacleLeft <= shipLeft + 50
+      if (obstacleBottom <= shipBottom + 50 && obstacleBottom >= shipBottom - 24 &&
+         obstacleLeft + 23 >= shipLeft && obstacleLeft <= shipLeft + 50
         ) {
         console.log('touch');
         gameOver();
